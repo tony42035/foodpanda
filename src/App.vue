@@ -13,7 +13,7 @@
         <div class="card p-2 m-2">
           <img :src="store.hero_listing_image" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-title fixed-height-title">{{ index+1 }} {{ store.name }}</p>
+            <p class="card-title fixed-height-title mb-0">{{ index+1 }} {{ store.name }}</p>
             <a :href="store.web_path" class="btn btn-primary">開始點餐</a>
           </div>
         </div>
@@ -84,6 +84,6 @@ export default {
 
 <style scoped>
 .fixed-height-title {
-  min-height: 3rem;
+  min-height: 4rem;
 }
 </style>
