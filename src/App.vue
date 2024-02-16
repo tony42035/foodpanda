@@ -8,12 +8,12 @@
     <h2>餐廳列表</h2>
     <h5>共 {{ storeCount }} 間餐廳</h5>
     <p class="text-end">資料更新時間：{{ dateTime }}</p>
-    <div class="row align-items-stretch">
+    <div class="row">
       <div class="col-6 col-md-3 g-0" v-for="(store, index) in allStores" :key="store.id">
         <div class="card p-2 m-2">
           <img :src="store.hero_listing_image" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-title">{{ index+1 }} {{ store.name }}</p>
+            <p class="card-title fixed-height-title">{{ index+1 }} {{ store.name }}</p>
             <a :href="store.web_path" class="btn btn-primary">開始點餐</a>
           </div>
         </div>
@@ -81,3 +81,9 @@ export default {
 }
 
 </script>
+
+<style scoped>
+.fixed-height-title {
+  min-height: 3rem;
+}
+</style>
