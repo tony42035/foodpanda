@@ -14,7 +14,7 @@
           <img :src="store.hero_listing_image" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ index+1 }} {{ store.name }}</h5>
-            <a :href="store.web_path" class="btn btn-primary">前往餐廳</a>
+            <a :href="store.web_path" class="btn btn-primary">開始點餐</a>
           </div>
         </div>
       </div>
@@ -24,6 +24,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -46,6 +47,10 @@ export default {
         .then( res => {
           this.allStores = res.data.data.items;
           this.storeCount = res.data.data.available_count;
+
+          if (this.storeCount == 0) {
+            this.showMessage();
+          }
         })
         .catch( err => {
           console.log(err);
@@ -61,6 +66,16 @@ export default {
         const second = String(now.getSeconds()).padStart(2, '0');
 
         this.dateTime = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+      },
+      showMessage() {
+        Swal.fire({
+          title: '噢歐！',
+          text: '目前沒有餐廳可以外送',
+          icon: 'error',
+          confirmButtonText: '好吧~',
+          allowOutsideClick: false,
+          confirmButtonColor: '#D70F64'
+        })
       }
     }
 }
